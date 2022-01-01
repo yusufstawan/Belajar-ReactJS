@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      const Mahasiswa = (props) => {
+        return (
+          <figure key={props.id}>
+            <img src={"img/" + props.pasFoto} alt={props.nama} />
+            <figcaption>
+              {props.nama} ({props.jurusan})
+            </figcaption>
+          </figure>
+        );
+      };
+
+      const DaftarMahasiswa = () => {
+        const mahasiswa = [
+          {
+            id: "01",
+            nama: "Eka",
+            jurusan: "Teknik Informatika",
+            pasFoto: "people1.jpg",
+          },
+          {
+            id: "02",
+            nama: "Rudi",
+            jurusan: "Teknik Elektro",
+            pasFoto: "people2.jpg",
+          },
+          {
+            id: "03",
+            nama: "Eko",
+            jurusan: "Teknik Kimia",
+            pasFoto: "people2.jpg",
+          },
+        ];
+        return (
+          <React.Fragment>
+            <h1>Daftar Mahasiswa - Universitas Ilkom</h1>
+            <hr />
+            <section style={{ display: "flex", textAlign: "center" }}>
+              {mahasiswa.map((mahasiswa) => (
+                <Mahasiswa key={mahasiswa.id} nama={mahasiswa.nama} jurusan={mahasiswa.jurusan} pasFoto={mahasiswa.pasFoto} />
+              ))}
+            </section>
+          </React.Fragment>
+        );
+      };
+
+      ReactDOM.render(<DaftarMahasiswa />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

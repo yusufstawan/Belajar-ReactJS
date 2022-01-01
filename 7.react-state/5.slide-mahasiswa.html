@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <style>
+      #root {
+        display: flex;
+        justify-content: center;
+      }
+
+      button {
+        background-color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px black;
+        margin: 10px;
+      }
+
+      button:hover {
+        box-shadow: 1px 1px 1px black;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      const mahasiswa = [
+        {
+          id: "01",
+          nama: "Eka",
+          jurusan: "Teknik Informatika",
+          pasFoto: "people1.jpg",
+        },
+        {
+          id: "02",
+          nama: "Lisa",
+          jurusan: "Sistem Informatika",
+          pasFoto: "people2.jpg",
+        },
+        {
+          id: "03",
+          nama: "Rudi",
+          jurusan: "Teknik Elektro",
+          pasFoto: "people3.jpg",
+        },
+      ];
+
+      class MyApp extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            nama: mahasiswa[0].nama,
+            jurusan: mahasiswa[0].jurusan,
+            pasFoto: mahasiswa[0].pasFoto,
+          };
+        }
+
+        handleMahasiswa0 = () => {
+          this.setState({
+            nama: mahasiswa[0].nama,
+            jurusan: mahasiswa[0].jurusan,
+            pasFoto: mahasiswa[0].pasFoto,
+          });
+        };
+
+        handleMahasiswaClick = (event) => {
+          let index = parseInt(event.target.getAttribute("index"));
+          this.setState({
+            nama: mahasiswa[index].nama,
+            jurusan: mahasiswa[index].jurusan,
+            pasFoto: mahasiswa[index].pasFoto,
+          });
+        };
+
+        render() {
+          console.log(this.state);
+          return (
+            <div>
+              {mahasiswa.map((mahasiswa, i) => (
+                <button key={mahasiswa.id} onClick={this.handleMahasiswaClick} index={i}>
+                  {mahasiswa.nama}
+                </button>
+              ))}
+
+              <figure>
+                <img src={"img/" + this.state.pasFoto} alt={this.state.nama} />
+                <figcaption>
+                  {this.state.nama} ({this.state.jurusan})
+                </figcaption>
+              </figure>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

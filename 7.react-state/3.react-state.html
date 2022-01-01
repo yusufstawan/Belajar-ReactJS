@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <style>
+      #root {
+        display: flex;
+        justify-content: center;
+      }
+
+      div {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        background-color: gainsboro;
+        font-size: 3em;
+        text-align: center;
+        padding: 10px 20px;
+        margin: 15px 0;
+      }
+
+      button {
+        background-color: wheat;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px black;
+        margin: 10px;
+      }
+
+      button:hover {
+        box-shadow: 1px 1px 1px black;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      class MyApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { judul: "Belajar React" };
+        }
+
+        handleButtonClick = () => {
+          this.setState({ judul: "Belajar JavaScript" });
+        };
+
+        render() {
+          console.log(`Render proses ... isi state judul = ${this.state.judul}`);
+          return (
+            <div>
+              <h1>{this.state.judul}</h1>
+              <button onClick={this.handleButtonClick}>Click Me</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      class Belajar extends React.Component {
+        constructor(props) {
+          super(props);
+          this.judul = this.props.materi.toLocaleUpperCase();
+        }
+        render() {
+          return <h1>Belajar {this.judul}</h1>;
+        }
+      }
+
+      const myElement = <Belajar materi="React" />;
+
+      ReactDOM.render(myElement, document.getElementById("root"));
+    </script>
+  </body>
+</html>

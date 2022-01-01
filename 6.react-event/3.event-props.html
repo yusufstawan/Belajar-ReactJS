@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+
+    <script type="text/babel">
+      class Tombol extends React.Component {
+        handleButtonClick() {
+          alert(this.props.pesan);
+        }
+        render() {
+          return (
+            <button onClick={this.handleButtonClick.bind(this)} style={{ margin: "10px" }}>
+              {this.props.children}
+            </button>
+          );
+        }
+      }
+
+      class MyApp extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>Belajar React</h1>
+              <Tombol pesan="Belajar React">React</Tombol>
+              <Tombol pesan="Belajar JavaScript">JavaScript</Tombol>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
