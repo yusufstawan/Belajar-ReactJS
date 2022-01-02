@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      const MyApp = () => {
+        const [judul, setJudul] = React.useState("Belajar React");
+        let foo = "Hei";
+
+        const handleButtonClick = () => {
+          console.log(foo);
+          foo = "Hello";
+          console.log(foo);
+          if (judul === "Belajar React") {
+            setJudul("Belajar JavaScript");
+          } else {
+            setJudul("Belajar React");
+          }
+        };
+
+        const handleFooClick = () => {
+          console.log(foo);
+        };
+
+        return (
+          <div>
+            <h1>{judul}</h1>
+            <button onClick={handleButtonClick}>Click Me</button>
+            <button onClick={handleFooClick}>Get foo</button>
+          </div>
+        );
+      };
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

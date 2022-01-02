@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <style>
+      #root {
+        display: flex;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .container {
+        margin-top: 2rem;
+        padding: 2rem 3rem;
+        box-shadow: 8px 8px 0px black;
+        border: 2px solid black;
+      }
+
+      .container div {
+        padding-bottom: 0.6rem;
+      }
+
+      div label:first-child {
+        display: inline-block;
+        width: 180px;
+      }
+
+      label {
+        vertical-align: top;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea,
+      select {
+        width: 230px;
+        font-size: 1rem;
+      }
+
+      button {
+        background-color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px black;
+        margin: 10px 0;
+      }
+
+      button:hover {
+        box-shadow: 1px 1px 1px black;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      class MyApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            nama: "",
+            email: "",
+            alamat: "",
+            jurusan: "",
+            jenisKelamin: "",
+            beasiswa: false,
+          };
+        }
+
+        handleInputChange = (event) => {
+          if (event.target.type === "checkbox") {
+            this.setState({ [event.target.name]: event.target.checked });
+          } else {
+            this.setState({ [event.target.name]: event.target.value });
+          }
+        };
+
+        handleButtonClick = () => {
+          console.log(this.state);
+        };
+
+        render() {
+          return (
+            <div className="container">
+              <div>
+                <label htmlFor="nama">Nama</label>
+                <input type="text" name="nama" id="nama" onChange={this.handleInputChange} />
+              </div>
+
+              <div>
+                <label htmlFor="email">Email</label>
+                <input type="email" name="email" id="email" onChange={this.handleInputChange} />
+              </div>
+
+              <div>
+                <label htmlFor="alamat">Alamat</label>
+                <textarea name="alamat" id="alamat" onChange={this.handleInputChange} />
+              </div>
+
+              <div>
+                <label htmlFor="email">Jurusan</label>
+                <select name="jurusan" value={this.state.jurusan} onChange={this.handleInputChange}>
+                  <option value="Ilmu Komputer">Ilmu Komputer</option>
+                  <option value="Sistem Informasi">Sistem Informasi</option>
+                  <option value="Teknik Informatika">Teknik Informatika</option>
+                  <option value="Teknik Komputer">Teknik Komputer</option>
+                </select>
+              </div>
+
+              <div>
+                <label>Jenis Kelamin</label>
+                <input type="radio" name="jenisKelamin" id="jenisKelamin1" value="Laki-laki" checked={this.state.jenisKelamin === "Laki-laki"} onChange={this.handleInputChange} />
+                <label htmlFor="jenisKelamin1">Laki-laki</label>
+                <input type="radio" name="jenisKelamin" id="jenisKelamin2" value="Perempuan" checked={this.state.jenisKelamin === "Perempuan"} onChange={this.handleInputChange} />
+                <label htmlFor="jenisKelamin2">Perempuan</label>
+              </div>
+
+              <div>
+                <label>Status Beasiswa</label>
+                <input type="checkbox" id="beasiswa" name="beasiswa" onChange={this.handleInputChange} />
+                <label htmlFor="beasiswa">Dapat Beasiswa</label>
+              </div>
+
+              <button onClick={this.handleButtonClick}>Check Form</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

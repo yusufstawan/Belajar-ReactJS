@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <style>
+      #root,
+      div {
+        display: flex;
+        justify-content: center;
+      }
+      input {
+        font-size: 1.3em;
+        margin: 10px;
+      }
+      button {
+        background-color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px black;
+        margin: 10px;
+      }
+      button:hover {
+        box-shadow: 1px 1px 1px black;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      class MyApp extends React.Component {
+        handleButtonClick() {
+          let inputName = document.getElementById("input").value;
+          console.log(inputName);
+        }
+        render() {
+          return (
+            <div>
+              <input type="text" id="input" />
+              <button onClick={this.handleButtonClick}>Check Input</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
