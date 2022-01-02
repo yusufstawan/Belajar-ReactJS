@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <style>
+      #root {
+        display: flex;
+        justify-content: center;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        background-color: gainsboro;
+        font-size: 3em;
+        text-align: center;
+        padding: 10px 0;
+        margin: 15px 0;
+      }
+      button {
+        background-color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px black;
+        margin: 10px;
+      }
+      button:hover {
+        box-shadow: 1px 1px 1px black;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      class Counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { counter: 0 };
+          console.log("Hello from constructor()");
+        }
+
+        handleButtonClick = (e) => {
+          let val = parseInt(e.target.getAttribute("val"));
+          this.setState((prevState) => ({ counter: prevState.counter + val }));
+        };
+
+        render() {
+          console.log("Hello from render()");
+          return (
+            <div>
+              <h1>{this.state.counter}</h1>
+              <button val="+1" onClick={this.handleButtonClick}>
+                Counter +1
+              </button>
+              <button val="-1" onClick={this.handleButtonClick}>
+                Counter -1
+              </button>
+            </div>
+          );
+        }
+
+        componentDidMount() {
+          console.log("Hello from componentDidMount()");
+        }
+
+        componentDidUpdate() {
+          console.log("Hello from componentDidUpdate()");
+        }
+
+        componentWillUnmount() {
+          console.log("Hello from componentWillUnmount");
+        }
+      }
+
+      class MyApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { showCounter: false };
+        }
+
+        handleButtonClick = () => {
+          this.setState((prevState) => ({ showCounter: !prevState.showCounter }));
+        };
+
+        render() {
+          return (
+            <div className="container">
+              <button onClick={this.handleButtonClick}>{this.state.showCounter ? "Hide counter" : "Show counter"}</button>
+              {this.state.showCounter && <Counter />}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+    <style>
+      #root {
+        display: flex;
+        justify-content: center;
+      }
+      h1 {
+        background-color: gainsboro;
+        font-size: 3em;
+        text-align: center;
+        padding: 10px 0;
+        margin: 15px 0;
+      }
+      button {
+        background-color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid gray;
+        box-shadow: 2px 2px 2px black;
+        margin: 10px;
+      }
+      button:hover {
+        box-shadow: 1px 1px 1px black;
+        background-color: #f1f1f1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      const Counter = () => {
+        const [counter, setCounter] = React.useState(0);
+
+        React.useEffect(() => {
+          console.log(`Dari useEffect, counter: ${counter}`);
+        }, []);
+
+        const handleButtonClick = (e) => {
+          let val = parseInt(e.target.getAttribute("val"));
+          setCounter((prevState) => prevState + val);
+        };
+
+        return (
+          <div>
+            <h1>{counter}</h1>
+            <button val="+1" onClick={handleButtonClick}>
+              Counter + 1
+            </button>
+            <button val="-1" onClick={handleButtonClick}>
+              Counter - 1
+            </button>
+          </div>
+        );
+      };
+
+      const MyApp = () => {
+        const [showCounter, setshowCounter] = React.useState(false);
+
+        const handleButtonClick = () => {
+          setshowCounter((prevState) => !prevState);
+        };
+
+        return (
+          <div className="container">
+            <button onClick={handleButtonClick}>{showCounter ? "Hide counter" : "Show counter"}</button>
+            {showCounter && <Counter />}
+          </div>
+        );
+      };
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
