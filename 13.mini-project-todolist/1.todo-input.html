@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Uncover</title>
+    <style>
+      #root {
+        display: flex;
+        justify-content: center;
+        font-size: 1.2rem;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .container {
+        margin-top: 2rem;
+        padding: 2rem 3rem;
+        box-shadow: 8px 8px 0px #007c9c;
+        border: 2px solid #19748c;
+      }
+
+      input[type="text"] {
+        width: 350px;
+        font-size: 1rem;
+        padding: 8px;
+        outline: 0;
+        border: 1px solid #007c9c;
+        border-radius: 3px 3px;
+      }
+
+      input[type="text"]:focus {
+        border-color: #007c9c;
+        box-shadow: 0 0 3px 4px rgb(0 124 156 / 16%);
+      }
+
+      .todo {
+        background-color: #007c9c;
+        padding: 0.3rem 0.5rem 0.4rem;
+        border-radius: 3px 3px;
+        margin-bottom: 15px;
+        color: white;
+        position: relative;
+      }
+
+      .todo span {
+        background-color: #007c9c;
+        color: #ffffff;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        border-top-right-radius: 3px 3px;
+        line-height: 16px;
+      }
+
+      .todo span:hover {
+        color: silver;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script src="js/babel.js"></script>
+    <script type="text/babel">
+      class MyApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { inputTodo: "" };
+        }
+
+        handleInputChange = (e) => {
+          this.setState({ inputTodo: e.target.value });
+        };
+
+        render() {
+          console.log(this.state.inputTodo);
+          return (
+            <div className="container">
+              <div className="todo">
+                Baca buku React Uncover<span>x</span>
+              </div>
+              <div className="todo">
+                Makan siang<span>x</span>
+              </div>
+              <div className="todo">
+                Main game<span>x</span>
+              </div>
+
+              <form>
+                <div>
+                  <input type="text" placeholder="Add todo..." value={this.state.inputTodo} onChange={this.handleInputChange} />
+                </div>
+              </form>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<MyApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
