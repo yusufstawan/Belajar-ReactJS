@@ -95,10 +95,28 @@
           this.setState({ inputTodo: e.target.value });
         };
 
+        handleDeleteClick = (e) => {
+          const newTodos = this.state.arrayTodo.filter((item) => item.id !== e.target.id);
+          this.setState({ arrayTodo: newTodos });
+        };
+
         handleFormSubmit = (e) => {
+          console.log(this.state.arrayTodo);
           e.preventDefault();
           if (this.state.inputTodo.trim() === "") {
             this.setState({ pesanError: "Todo tidak boleh kosong" });
+          } else {
+            //   input todo baru ke dalam state
+            const newTodos = [
+              ...this.state.arrayTodo,
+              {
+                id: new Date().getTime().toString(),
+                text: this.state.inputTodo,
+              },
+            ];
+            this.setState({ arrayTodo: newTodos });
+            // kosongkan input text
+            this.state.inputTodo = "";
           }
         };
 
@@ -108,7 +126,9 @@
               {this.state.arrayTodo.map((todo) => (
                 <div className="todo" key={todo.id}>
                   {todo.text}
-                  <span>x</span>
+                  <span id={todo.id} onClick={this.handleDeleteClick}>
+                    x
+                  </span>
                 </div>
               ))}
 

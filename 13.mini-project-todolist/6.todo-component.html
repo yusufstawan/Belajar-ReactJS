@@ -81,6 +81,19 @@
         { id: "03", text: "Main Game" },
       ];
 
+      class Todo extends React.Component {
+        render() {
+          return (
+            <div className="todo">
+              {this.props.text}
+              <span id={this.props.id} onClick={this.props.onTodoClick}>
+                x
+              </span>
+            </div>
+          );
+        }
+      }
+
       class MyApp extends React.Component {
         constructor(props) {
           super(props);
@@ -95,10 +108,28 @@
           this.setState({ inputTodo: e.target.value });
         };
 
+        handleDeleteClick = (e) => {
+          const newTodos = this.state.arrayTodo.filter((item) => item.id !== e.target.id);
+          this.setState({ arrayTodo: newTodos });
+        };
+
         handleFormSubmit = (e) => {
+          console.log(this.state.arrayTodo);
           e.preventDefault();
           if (this.state.inputTodo.trim() === "") {
             this.setState({ pesanError: "Todo tidak boleh kosong" });
+          } else {
+            //   input todo baru ke dalam state
+            const newTodos = [
+              ...this.state.arrayTodo,
+              {
+                id: new Date().getTime().toString(),
+                text: this.state.inputTodo,
+              },
+            ];
+            this.setState({ arrayTodo: newTodos });
+            // kosongkan input text
+            this.state.inputTodo = "";
           }
         };
 
@@ -106,10 +137,7 @@
           return (
             <div className="container">
               {this.state.arrayTodo.map((todo) => (
-                <div className="todo" key={todo.id}>
-                  {todo.text}
-                  <span>x</span>
-                </div>
+                <Todo key={todo.id} id={todo.id} text={todo.text} onTodoClick={this.handleDeleteClick} />
               ))}
 
               <form onSubmit={this.handleFormSubmit}>
