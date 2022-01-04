@@ -1,0 +1,14 @@
+.tombol {
+  background-color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 2px black;
+  margin: 10px;
+}
+
+.tombol:hover {
+  box-shadow: 1px 1px 1px black;
+  background-color: #f1f1f1;
+}
