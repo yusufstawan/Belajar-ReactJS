@@ -1,8 +1,60 @@
 #root {
   display: flex;
   justify-content: center;
+  font-size: 1.2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-div {
+.container {
+  margin-top: 2rem;
+  padding: 2rem 3rem;
+  box-shadow: 8px 8px 0px #007c9c;
+  border: 2px solid #19748c;
+}
+
+input[type="text"] {
+  width: 350px;
+  font-size: 1rem;
+  padding: 8px;
+  outline: 0;
+  border: 1px solid #007c9c;
+  border-radius: 3px 3px;
+}
+
+input[type="text"]:focus {
+  border-color: #007c9c;
+  box-shadow: 0 0 3px 4px rgb(0 124 156 /16%);
+}
+
+.todo {
+  background-color: #007c9c;
+  padding: 0.3rem 0.5rem 0.4rem;
+  border-radius: 3px 3px;
+  margin: 15px 0;
+  color: white;
+  position: relative;
+}
+
+.todo span {
+  background-color: #007c9c;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
   text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-bottom-right-radius: 3px 3px;
+  line-height: 16px;
+}
+
+.todo span:hover {
+  color: silver;
+}
+
+small {
+  display: block;
+  color: red;
 }
