@@ -1,56 +1,68 @@
-import React, { useState } from 'react';
-import Todo from './components/Todo';
-import TodoForm from './components/TodoForm';
+import React, { useState } from "react";
+import RowMahasiswa from "./components/RowMahasiswa"
+import RowTambahMahasiswa from "./components/RowTambahMahasiswa"
 
-const todos = [
+// Data awal tabel mahasiswa
+const arrMahasiswas = [
     {
-        id: "01",
-        text: "Baca buku React"
+        nim: "18010245",
+        nama: "Eka Putra",
+        jurusan: "Teknik Informatika",
+        asalProvinsi: "DKI Jakarta"
     },
     {
-        id: "02",
-        text: "Makan Siang"
+        nim: "19010214",
+        nama: "Lisa Permata",
+        jurusan: "Sistem Informasi",
+        asalProvinsi: "Simatera Barat"
     },
     {
-        id: "03",
-        text: "Main Game"
+        nim: "20010710",
+        nama: "Rudi Setiawan",
+        jurusan: "Ilmu Komputer",
+        asalProvinsi: "Jawa Tengah"
+    },
+    {
+        nim: "20010790",
+        nama: "Friska Ramadhani",
+        jurusan: "Ilmu Komputer",
+        asalProvinsi: "Kalimantan Barat"
     }
 ];
 
 const App = () => {
-    const [arrayTodo, setArrayTodo] = useState(todos);
-
-    const handleDeleteClick = (e) => {
-        const newTodos = arrayTodo.filter(
-            item => item.id !== e.target.id
-        );
-        setArrayTodo(newTodos)
-    }
-
-    const handleaddTodo = (text) => {
-        const newTodos = [
-            ...arrayTodo,
-            {
-                id: new Date().getTime().toString(),
-                text: text
-            }
-        ];
-        setArrayTodo(newTodos)
-    }
+    const [mahasiswas, setMahasiswas] = useState(arrMahasiswas);
 
     return (
-        <div className='container'>
-            {
-                arrayTodo.map((todo) => (
-                    <Todo
-                        key={todo.id}
-                        id={todo.id}
-                        text={todo.text}
-                        onTodoClick={handleDeleteClick}
-                    />
-                ))
-            }
-            <TodoForm onAddTodo={handleaddTodo} />
+        <div className="container mt-5">
+            <div className="row mt-5">
+                <div className="col">
+                    <h1 className="text-center">Tabel Mahasiswa</h1>
+
+                    <table className="table mt-4">
+                        <thead>
+                            <tr>
+                                <th>NIM</th>
+                                <th>Nama</th>
+                                <th>Jurusan</th>
+                                <th>Asal Provinsi</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                mahasiswas.map((mahasiswa) =>
+                                    <RowMahasiswa
+                                        key={mahasiswa.nim}
+                                        mahasiswa={mahasiswa}
+                                    />
+                                )
+                            }
+                            <RowTambahMahasiswa />
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     )
 }
