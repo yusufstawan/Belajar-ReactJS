@@ -1,0 +1,19 @@
+/* Agar container tidak terlalu lebar */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px !important;
+  }
+}
+
+table {
+  table-layout: fixed;
+}
+
+td {
+  vertical-align: middle;
+}
+
+small {
+  display: block;
+  color: red;
+}
