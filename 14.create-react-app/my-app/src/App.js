@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Transaction from './components/Transaction';
+import SaldoBox from './components/SaldoBox'
+import AddTransaction from './components/AddTransaction'
 
 const initTansactions = [
     {
@@ -30,7 +32,9 @@ const App = () => {
     return (
         <React.Fragment>
             <Header />
+            <SaldoBox transactions={transactions} />
             <Transaction transactions={transactions} />
+            <AddTransaction />
             <Footer />
         </React.Fragment>
     )
