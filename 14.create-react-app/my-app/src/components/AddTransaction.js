@@ -85,14 +85,12 @@ const AddTransaction = (props) => {
             tanggalInput.setMonth(parseInt(formInput.tanggal.substr(3, 2) - 1));
             tanggalInput.setFullYear(parseInt(formInput.tanggal.substr(6, 4)));
 
-            let transaction = {
+            props.onTambahTransaction({
                 "id": Math.floor(Math.random() * 1000000000000).toString(),
                 "tanggal": tanggalInput.getTime(),
                 "keterangan": formInput.keterangan,
                 "nominal": parseInt(formInput.nominal),
-            };
-
-            console.log(transaction);
+            });
 
             // kosongkan inputan form
             setFormInput({

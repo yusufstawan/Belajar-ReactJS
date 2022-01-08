@@ -29,12 +29,24 @@ const initTansactions = [
 const App = () => {
     const [transactions, setTransaction] = useState(initTansactions);
 
+    // handler untuk menambah data transaction
+    // akan di-triger dari komponen addtransaction
+    const handleTambahTransaction = (data) => {
+        let newTransactions = [
+            ...transactions, data
+        ];
+
+        // atur ulang urutan transaction agar tanggal terkecil di bagian atas
+        newTransactions.sort((a, b) => a.tanggal - b.tanggal);
+
+        setTransaction(newTransactions);
+    }
     return (
         <React.Fragment>
             <Header />
             <SaldoBox transactions={transactions} />
             <Transaction transactions={transactions} />
-            <AddTransaction />
+            <AddTransaction onTambahTransaction={handleTambahTransaction} />
             <Footer />
         </React.Fragment>
     )
