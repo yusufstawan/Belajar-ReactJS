@@ -23,7 +23,7 @@ const ListTransaction = (props) => {
             <p className="fs-5 mb-1 me-3 text">
                 Rp. {props.nominal.toLocaleString('id-ID')}
             </p>
-            <span className="delete-icon">x</span>
+            <span className="delete-icon" id={props.id} onClick={props.onHapusTransaction} >x</span>
         </div>
     )
 }

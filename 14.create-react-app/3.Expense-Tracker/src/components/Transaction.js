@@ -18,6 +18,7 @@ const Transaction = (props) => {
                                     tanggal={transaction.tanggal}
                                     keterangan={transaction.keterangan}
                                     nominal={transaction.nominal}
+                                    onHapusTransaction={props.onHapusTransaction}
                                 />
                             ))
                         }
@@ -35,6 +36,7 @@ const Transaction = (props) => {
                                     tanggal={transaction.tanggal}
                                     keterangan={transaction.keterangan}
                                     nominal={transaction.nominal}
+                                    onHapusTransaction={props.onHapusTransaction}
                                 />
                             ))
                         }

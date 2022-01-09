@@ -41,11 +41,23 @@ const App = () => {
 
         setTransaction(newTransactions);
     }
+
+    const handleHapusTransaction = (e) => {
+        // cari index transaction yang akan dihapus berdasarkan id
+        const result = transactions.findIndex(
+            transaction => (transaction.id === e.target.id)
+        );
+        const newTransactions = transactions;
+        newTransactions.splice(result, 1);
+        setTransaction([...newTransactions])
+    }
+
     return (
         <React.Fragment>
             <Header />
             <SaldoBox transactions={transactions} />
-            <Transaction transactions={transactions} />
+            <Transaction transactions={transactions}
+                onHapusTransaction={handleHapusTransaction} />
             <AddTransaction onTambahTransaction={handleTambahTransaction} />
             <Footer />
         </React.Fragment>
