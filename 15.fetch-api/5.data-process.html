@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch</title>
+  </head>
+  <body>
+    <h1>Belajar Fetch Api</h1>
+    <script>
+      fetch("https://reqres.in/api/users/1")
+        .then((response) => response.json())
+        .then((data) => {
+          let user = data.data;
+          console.log(user.id);
+          console.log(user.first_name);
+          console.log(user.last_name);
+          console.log(user.email);
+          console.log(user.avatar);
+        });
+    </script>
+  </body>
+</html>

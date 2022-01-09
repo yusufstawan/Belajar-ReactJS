@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Parse</title>
+  </head>
+  <body>
+    <h1>Belajar JSON Parse</h1>
+    <script>
+      let mahasiswaJSON = `
+          {
+              "nim": "15502244003",
+              "nama": "Yusuf Setiyawan",
+              "jurusan": "Teknik Elektronika",
+              "asalProvinsi": "Yogyakarta"
+          }`;
+
+      console.log(typeof mahasiswaJSON);
+      let mahasiswa = JSON.parse(mahasiswaJSON);
+      console.log(mahasiswa);
+      console.log(typeof mahasiswa);
+      console.log(mahasiswa.nama);
+    </script>
+  </body>
+</html>
