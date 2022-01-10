@@ -1,0 +1,84 @@
+/* Agar container tidak terlalu lebar */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px !important;
+  }
+}
+
+header {
+  background-image: linear-gradient(rgb(0 0 0 / 71%), rgb(2 12 24)), url("./img/bg-header.jpg");
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  background-color: #020d18;
+}
+
+nav {
+  background-color: transparent;
+  margin-top: -70px;
+}
+
+footer {
+  background-color: #0f1c27;
+}
+
+/* ================= */
+/*  movie-container  */
+/* ================= */
+
+.movie-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.movie-container img {
+  transition: filter 0.3s ease-in-out;
+}
+
+.movie-container:hover img {
+  filter: brightness(50%);
+}
+
+.badge.vote {
+  position: absolute;
+  top: 3%;
+  right: 9%;
+  font-size: 1rem;
+}
+
+/* ================= */
+/*     movie-info    */
+/* ================= */
+
+.movie-info {
+  color: white;
+  position: absolute;
+  text-align: center;
+  padding: 0 1.5rem;
+  width: 100%;
+  top: 15%;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.movie-container:hover .movie-info {
+  opacity: 1;
+}
+
+.movie-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.movie-info .overview {
+  text-align: left;
+  padding: 0 0.2rem;
+}
