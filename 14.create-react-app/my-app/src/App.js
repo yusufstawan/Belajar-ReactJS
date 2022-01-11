@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Movie from "./components/Movie";
+
 
 const App = () => {
     const [movies, setMovies] = useState([]);
@@ -20,11 +22,21 @@ const App = () => {
         }
         myFetch();
     }, [])
-    console.log(movies)
 
     return (
         <React.Fragment>
             <Header />
+            <main className="pb-5">
+                <div className="container">
+                    <h2 className="py-5 text-white text-center">Best Movie</h2>
+                    <div className="row">
+                        {
+                            movies.map((movie) => <Movie key={movie.id} movie={movie} />
+                            )
+                        }
+                    </div>
+                </div>
+            </main>
             <Footer />
         </React.Fragment>
     )
