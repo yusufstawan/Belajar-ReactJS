@@ -1,13 +1,9 @@
 const Header = () => {
     return (
-        <header className="text-white py-5">
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <h1 className="display-1">Movie Database</h1>
-                        <h3 className="lead mb-0">Top Best Movie</h3>
-                    </div>
-                </div>
+        <header id="header">
+            <div className="container py-4">
+                <h1 className="display-5">Expense Tracker</h1>
+                <p>Catat setiap pemasukan dan pengeluaranmu</p>
             </div>
         </header>
     )

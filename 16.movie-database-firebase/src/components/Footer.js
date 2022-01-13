@@ -1,11 +1,11 @@
 const Footer = () => {
     return (
-        <footer id="footer" className="text-white py-5">
+        <footer id="main-footer" className="text-white py-5">
             <div className="container">
                 <div className="row">
                     <div className="col text-center">
-                        <p className="lead mb-0">Expense Tracker</p>
-                        <p>Catat setiap pemasukan dan pengeluaran. Copyright 2022</p>
+                        <p className="lead mb-0">Movie Database</p>
+                        <p>All data from themoviedb.org API</p>
                     </div>
                 </div>
             </div>

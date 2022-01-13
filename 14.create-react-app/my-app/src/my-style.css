@@ -1,3 +1,12 @@
+/* ================== */
+/*    Global Style    */
+/* ================== */
+
+:root {
+  --warna--pemasukan: #1dcc70;
+  --warna--pengeluaran: #ff396f;
+}
+
 /* Agar container tidak terlalu lebar */
 @media (min-width: 1200px) {
   .container {
@@ -5,80 +14,147 @@
   }
 }
 
-header {
-  background-image: linear-gradient(rgb(0 0 0 / 71%), rgb(2 12 24)), url("./img/bg-header.jpg");
-  height: 250px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body {
+  background-color: whitesmoke;
 }
 
-main {
-  background-color: #020d18;
-}
+/* Header */
 
-nav {
-  background-color: transparent;
-  margin-top: -70px;
-}
-
-footer {
-  background-color: #0f1c27;
-}
-
-/* ================= */
-/*  movie-container  */
-/* ================= */
-
-.movie-container {
-  position: relative;
-  cursor: pointer;
-}
-
-.movie-container img {
-  transition: filter 0.3s ease-in-out;
-}
-
-.movie-container:hover img {
-  filter: brightness(50%);
-}
-
-.badge.vote {
-  position: absolute;
-  top: 3%;
-  right: 9%;
-  font-size: 1rem;
-}
-
-/* ================= */
-/*     movie-info    */
-/* ================= */
-
-.movie-info {
+#header {
+  background-color: #412abe;
+  background: linear-gradient(180deg, rgba(65, 42, 190, 1) 0%, rgba(94, 67, 244, 1) 100%);
+  clip-path: ellipse(87% 100% at 31.5% 0%);
   color: white;
-  position: absolute;
+  height: 200px;
+  z-index: 1;
+}
+
+/* Saldo Box */
+
+#saldo-box .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.total-saldo {
+  border-radius: 10px 10px;
+  background: white;
+  margin-top: -70px;
+  z-index: 2;
+  border: 1px solid rgb(68 68 68 / 15%);
+}
+
+.mini-saldo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  margin: 0;
   text-align: center;
-  padding: 0 1.5rem;
-  width: 100%;
-  top: 15%;
-  left: 0;
+  flex: 1 1;
+}
+
+.mini-saldo-pemasukan {
+  border-bottom-left-radius: 10px;
+  border-right: 1px solid #eee;
+  background-color: var(--warna--pemasukan);
+}
+
+.mini-saldo-pengeluaran {
+  border-bottom-right-radius: 10px;
+  border-left: 1px solid #eee;
+  background-color: var(--warna--pengeluaran);
+}
+
+/* Transaction */
+
+.list-transaction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  position: relative;
+}
+
+.list-transaction small {
+  font-size: 0.7rem;
+}
+
+.list-pemasukan {
+  border-left: 5px solid var(--warna--pemasukan);
+}
+
+.list-pengeluaran {
+  border-left: 5px solid var(--warna--pengeluaran);
+}
+
+.list-pemasukan .text {
+  color: #1aa35b;
+  white-space: nowrap;
+}
+
+.list-pengeluaran .text {
+  color: #d6325f;
+  white-space: nowrap;
+}
+
+.list-transaction .delete-icon {
+  background-color: var(--warna--pengeluaran);
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-top-right-radius: 3px 3px;
+  line-height: 16px;
   opacity: 0;
-  transition: all 0.3s ease-in-out 0s;
 }
 
-.movie-container:hover .movie-info {
+.list-transaction:hover .delete-icon {
   opacity: 1;
+  transition: all ease-in-out 0.4s;
 }
 
-.movie-info h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0;
+/* Form */
+
+.btn-primary {
+  background-color: #4b32d0;
+  border-color: #221088;
 }
 
-.movie-info .overview {
-  text-align: left;
-  padding: 0 0.2rem;
+.btn-primary:hover {
+  background-color: #3924a7;
+  border-color: #261773;
+}
+
+.btn-primary:focus {
+  background-color: #4b32d0;
+  border-color: #221088;
+  box-shadow: 0 0 0 0.25rem rgb(200 191 255);
+}
+
+.error-box {
+  color: red;
+}
+
+.error-box ul {
+  border: 1px solid var(--warna--pengeluaran);
+}
+
+.error-box p {
+  margin: 0;
+}
+
+/* Footer */
+
+#footer {
+  background-color: #412abe;
+  clip-path: ellipse(189% 100% at 143.13% 100%);
 }

@@ -9,22 +9,17 @@
   <body>
     <h1>Belajar Api Firebase</h1>
     <script>
-      let data = {
-        tanggal: new Date("24 Sept 2021 10:30").getTime(),
-        keterangan: "Beli Sepatu",
-        nominal: -150000,
-      };
       let url = "https://expense-tracker-react-11057-default-rtdb.";
       url += "asia-southeast1.firebasedatabase.app";
-      url += "/transaction.json";
+      url += "/transaction/";
+      url += "/-MtHO7SShOpa1WaGbeKV.json";
 
       const myFetch = async () => {
         try {
           let response = await fetch(url, {
-            method: "POST",
-            body: JSON.stringify(data),
+            method: "DELETE",
           });
-          alert("Data berhasil di kirim");
+          alert("Hapus data berhasil");
           if (!response.ok) {
             throw new Error(response.status);
           }
@@ -32,7 +27,6 @@
           console.log(`Terjadi gangguan dengan pesan: "${error}"`);
         }
       };
-
       myFetch();
     </script>
   </body>
